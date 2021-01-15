@@ -8,3 +8,7 @@ if (divisor == inf)
 end
 sum = dividend - divisor;
 quotient = mod(sum, ((2^m) - 1)); 
+isinf = isnan(quotient);
+if isinf
+    quotient = inf;
+end
