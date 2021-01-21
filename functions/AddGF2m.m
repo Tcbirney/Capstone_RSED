@@ -22,7 +22,7 @@ else
     end
 
     xor_res = xor(r_in1, r_in2); %xor the rectangular coordinates
-    [rows, cols] = size(gf_matrix);
+    [rows, ~] = size(gf_matrix);
 
     for i = 1:rows %check each row of GF for matches
         if xor_res(1,:) == gf_matrix(i,:)

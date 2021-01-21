@@ -37,6 +37,7 @@ if(numel(temp_cw) > numel(r))
     end
 end
 
+code_word = Inf*ones(1, numShifts);
 % Create the actual codeword using addition
 % iterate through each index backwards
 for i = numShifts:-1:1

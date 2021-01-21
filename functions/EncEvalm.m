@@ -8,6 +8,7 @@ m = numel(gf_matrix(1,:));  % set m to number of rows (power of 2)
 numShifts = (2^m) - 1; 
 ctr = 0;
 
+code_word = Inf*ones(1, numShifts);
 % iteratet through each index of the codeword backwards 
 for i = numShifts:-1:1
     % set codeword[index_num] to the evaluated polynomial at the
