@@ -14,20 +14,18 @@ x = input(prompt)
 msg = 'Error: Invalid Selection. Please Try Again\n';
 
 % error checking the user input
-while ((x < 1) || (x > 3))
+while ((x < 1) || (x > 2))
     fprintf(msg);
     x = input(prompt) %reprompt user until they provide a valid input
 end
 
-% Call Evaluation Method if user input = 1
-if x == 1
-    code_word = EncEvalm(m_poly,gf_matrix)
-% Call Generator Polynomial Method (calling multiplication) if user input =
-% 2
-elseif x==2
+fprintf('Final Codeword is: \n')
+
+% Call Generator Polynomial Method (calling multiplication) if user input = 1
+elseif x==1
     code_word = PolyMultGF2m(m_poly,gen_poly,gf_matrix)
-% Call Systematic Method if user input = 3
-elseif x==3
+% Call Systematic Method if user input = 2
+elseif x==2
     code_word = EncSystematicm(m_poly,gen_poly,gf_matrix)
 
 end
