@@ -8,7 +8,7 @@
 function [code_word] = Encoderm(m_poly,gen_poly,gf_matrix)
 
 % prompt user for their encoding method
-prompt = 'Which method would you like to use? \nEnter 1 for Evaluation Method.\nEnter 2 for Generator Polynomial Method. \nEnter 3 for Systematic Method.\n ';
+prompt = 'Which method would you like to use? \nEnter 1 for Generator Polynomial Method. \nEnter 2 for Systematic Method.\n ';
 x = input(prompt)
 
 msg = 'Error: Invalid Selection. Please Try Again\n';
@@ -21,8 +21,9 @@ end
 
 fprintf('Final Codeword is: \n')
 
-% Call Generator Polynomial Method (calling multiplication) if user input = 1
-elseif x==1
+% Call Generator Polynomial Method (calling multiplication) if user input =
+% 1
+if x==1
     code_word = PolyMultGF2m(m_poly,gen_poly,gf_matrix)
 % Call Systematic Method if user input = 2
 elseif x==2
