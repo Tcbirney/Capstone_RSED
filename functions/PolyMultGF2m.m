@@ -10,16 +10,18 @@ rowIndx = 1;
 power1 = numel(poly1)-1;% deg(poly1)
 power2 = numel(poly2)-1;% deg(poly2)
 colIndx = power1+power2+1;
-toAdd = inf*ones(power2+1,colIndx); % (# elements poly2, total # elements)
+toAdd = -1*ones(power2+1,colIndx); % (# elements poly2, total # elements)
  
  
 for i = numel(poly2): -1: 1 %for each part of poly2 from right to left
     for j = numel(poly1(1,:)): -1: 1 %for each element of poly 1 from right to left
+        
+        % do we need the multGFM function if i can just check if either of
+        % them are inf
         p = MultGF2m(poly2(i),poly1(j), gf_matrix);%multiply each element of poly1 by the poly2 element
-        isInf = isnan(p); %if result is NaN
-        if (isInf == 1) %write inf to that spot
-            toAdd(rowIndx, colIndx - offset) = inf;
-        else %otherwise write the number result to that spot
+        if(p < 0)
+            toAdd(rowIndx, colIndx - offset) = -1;
+        else
             toAdd(rowIndx, colIndx - offset) = p;
         end
         colIndx = colIndx - 1;%go to next column (move left)
@@ -29,7 +31,7 @@ for i = numel(poly2): -1: 1 %for each part of poly2 from right to left
     colIndx = power1+power2+1; %reset column index to rightmost place
 end
  
-sum = inf*ones(1,colIndx);
+sum = -1*ones(1,colIndx);
 %add the rows from multiplication
 [row, col] = size(toAdd);
 sum(1,:) = toAdd(1, :);

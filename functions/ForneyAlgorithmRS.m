@@ -2,11 +2,11 @@ function [errorPoly] = ForneyAlgorithmRS(lambda,syndromes,chien,gf_matrix)
 %function to establish and find the roots of the Error Evaluator Polynomial
 %omega = lambda*(s + 1)modx^
 %multiply lambda by the syndrome + 1
-msg = 'Executing Forney Algorithm...';
-disp(msg);
+%msg = 'Executing Forney Algorithm...';
+%disp(msg);
 
 indx = 1;
-while lambda(indx) == Inf
+while lambda(indx) == -1
     indx = indx + 1;
 end
 
@@ -15,7 +15,7 @@ lambda = lambda(indx:numel(lambda));
 modNum = 2^numel(gf_matrix(1,:)) - 1;
 
 %flip syndromes (because it is reversed in berlekamp)
-s_flipped = inf*ones(1,(numel(syndromes) + 1));
+s_flipped = -1*ones(1,(numel(syndromes) + 1));
 s_flipped(1:numel(syndromes)) = flip(syndromes);
 s_flipped(end) = 0;
 p = PolyMultGF2m(lambda, s_flipped, gf_matrix);
@@ -28,8 +28,8 @@ ix = col_p - r + 2;
 omega = p(ix:end); %modulus
 deriv = inf*ones(1,numel(omega));
 
-printo = ['Omega: [', num2str(omega(:).'), ']'];
-disp(printo);
+%printo = ['Omega: [', num2str(omega(:).'), ']'];
+%disp(printo);
 
 %compute formal derivative
 xpwr = 1;
@@ -38,7 +38,7 @@ for j = (numel(lambda) - 1):-1:1
     if xpwr == 1
         deriv(derivIndx) = lambda(j);
     elseif mod(xpwr, 2) == 0 %if it's even, the GF addition cancels
-        deriv(derivIndx) = inf;
+        deriv(derivIndx) = -1;
     else
         deriv(derivIndx) = lambda(j); %shift right
     end
@@ -46,11 +46,11 @@ for j = (numel(lambda) - 1):-1:1
     xpwr = xpwr + 1;
 end
 
-errorPoly = inf*ones(1,chien(1)+1); 
+errorPoly = -1*ones(1,chien(1)+1); 
 
 %sub each Chien value into Forney's expression
 for i0 = 1:numel(chien) %start at highest power
-   intPoly = Inf*ones(1,numel(omega));    
+   intPoly = -1*ones(1,numel(omega));    
    errorIndx = numel(errorPoly) - (chien(i0));
    negative = modNum - chien(i0); 
    coef = chien(i0) - deriv(end); %subtract outside alpha from denominator alpha
@@ -95,6 +95,6 @@ for i0 = 1:numel(chien) %start at highest power
 %    derivEval = EvalPolyGF2m(deriv, negative, gf_matrix); %divide that by deriv evaluated at negative chien 
 %    errorPoly(errorIndx) = PolyDivGF2m(product, derivEval, gf_matrix);
 end
-print = ['Error pattern: [', num2str(errorPoly(:).'), ']'];
-disp(print);
+%print = ['Error pattern: [', num2str(errorPoly(:).'), ']'];
+%disp(print);
 end

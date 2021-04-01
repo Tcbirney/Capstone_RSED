@@ -6,15 +6,15 @@
 function [q, r] = PolyDivGF2m(dividend, divisor, gf_matrix)
 m = numel(gf_matrix(1,:));
 numDivs = ((numel(dividend) - 1) - (numel(divisor) - 1)); %power of dividend - power of divisor
-toSubtract = inf*ones(2, numel(divisor));
-quotient = inf*ones(1, numDivs);
+toSubtract = -1*ones(2, numel(divisor));
+quotient = -1*ones(1, numDivs);
 toSubtract(1,:) = dividend(1:numel(divisor)); %initialize for first subtraction
-sub_res = inf*ones(1, (numel(divisor)));
+sub_res = -1*ones(1, (numel(divisor)));
 bringDwn = numel(divisor) + 1;
 divs = 0; %keep track of number of iteratiions
 
 %for i = 1:numDivs %is this loop redundant?
-    for j = 1:numDivs + 1 %for each element in the divisor
+    for j = 1:(numDivs + 1) %for each element in the divisor
         in1 = toSubtract(1, 1);
         in2 = divisor(1);
         quotient(1, j) = DivGF2m(in1, in2, gf_matrix);%divide the element
@@ -27,7 +27,7 @@ divs = 0; %keep track of number of iteratiions
         for i0 = 1:numel(divisor)%subtract
             sub_res(1,i0) = AddGF2m(toSubtract(1,i0), toSubtract(2, i0), gf_matrix);%perform the subtraction
         end
-        toSubtract(1:end) = inf; %reinitialize toSubtract
+        toSubtract(1:end) = -1; %reinitialize toSubtract
         toSubtract(1, 1:numel(divisor) - 1) = sub_res(2:end); %assign the result to the next subtraction register
         if divs < numDivs %bring down number from dividend if applicable
             toSubtract(1, numel(divisor)) = dividend(bringDwn);

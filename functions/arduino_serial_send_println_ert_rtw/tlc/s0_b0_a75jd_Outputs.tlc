@@ -1,0 +1,36 @@
+%implements s0_b0_a75jd_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS0B0 = OpaqueTLCBlockFcn("Outputs", 0, 0, 0, 2, 0)
+%assign tlcOutputsFcnOfS0B2 = OpaqueTLCBlockFcn("Outputs", 0, 2, 0, 2, 1)
+%assign tlcOutputsFcnOfS0B3 = OpaqueTLCBlockFcn("Outputs", 0, 3, 0, 2, 2)
+%if !WHITE_SPACE(tlcOutputsFcnOfS0B0)
+/* M-S-Function: '<Root>/Serial Configuration' */
+%<tlcOutputsFcnOfS0B0>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS0B2)
+/* M-S-Function: '<Root>/Serial Send' incorporates:
+ *  Constant: '<Root>/Constant'
+ */
+%<tlcOutputsFcnOfS0B2>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS0B3)
+/* M-S-Function: '<Root>/Serial Receive' */
+%<tlcOutputsFcnOfS0B3>\
+%endif
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction
