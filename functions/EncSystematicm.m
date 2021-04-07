@@ -6,17 +6,18 @@
 % Output: Returns codeword from using that method
 % Example Input: EncSystematicm([0 4 2],[0 3 0 1 3],GenerateGF2m(3,[1 0 1 1]))
 
-function [code_word] = EncSystematicm(poly,gen,gf_matrix)
+function code_word  = EncSystematicm(poly,gen,gf_matrix)
 m = numel(gf_matrix(1,:));  % set m to number of rows (power of 2)
 numShifts = (2^m) - 1; 
 power = numShifts - m; % find power which is n-k
 
-% Creating the temp polynomial
-x(power+1) = 0;
 
+x = ones(1: power+1);
+x(power+1) =0;
+% ask dona
 % Filling the rest of the polynomial with inf
 for i = (power+1):-1:2
-    x(i) = inf;
+    x(i) = -1;
 end
 % 
 % % Shifting the temp polynomial 
@@ -33,11 +34,12 @@ if(numel(temp_cw) > numel(r))
     % for the number of offsets
     for i = 1:diff
         % add infs to the left of the array
-        r = [inf, r(1:end)];
+        r = [-1, r(1:end-1)];
     end
 end
 
-code_word = Inf*ones(1, numShifts);
+
+code_word = -1*ones(1, numShifts);
 % Create the actual codeword using addition
 % iterate through each index backwards
 for i = numShifts:-1:1
