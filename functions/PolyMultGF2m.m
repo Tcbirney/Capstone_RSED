@@ -11,8 +11,8 @@ power1 = numel(poly1)-1;% deg(poly1)
 power2 = numel(poly2)-1;% deg(poly2)
 colIndx = power1+power2+1;
 toAdd = -1*ones(power2+1,colIndx); % (# elements poly2, total # elements)
- 
- 
+
+
 for i = numel(poly2): -1: 1 %for each part of poly2 from right to left
     for j = numel(poly1(1,:)): -1: 1 %for each element of poly 1 from right to left
         
@@ -35,7 +35,7 @@ sum = -1*ones(1,colIndx);
 %add the rows from multiplication
 [row, col] = size(toAdd);
 sum(1,:) = toAdd(1, :);
-for i0 = 2:row %for each row after the first
+for i0 = 2:(row) %for each row after the first
     for i1 = numel(sum):-1:1 %for each row element right to left
         in1 = toAdd(i0, i1);
         in2 = sum(1, i1);
