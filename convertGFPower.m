@@ -1,9 +1,10 @@
 function [powerNotation] = convertGFPower(gf_matrix, bitsIn, hexIn, powers)
 %Takes in gf matrix, options of power notation, binary, or hex and converts to power notation if
-%necessary. unused input formats should hold 'x'. Hex format should be ['A1';'B1']
+%necessary. unused input formats should hold 'x'. Hex format should be
+%['A1';'B1'], bits [1 1 0 0]
 
 m = numel(gf_matrix(1,:));
-
+        
 %is it already in power notation?
 if powers ~= 'x'
     powerNotation = powers;
@@ -11,9 +12,17 @@ if powers ~= 'x'
     
 %is it binary?
 elseif bitsIn ~= 'x'
+    
+    %pad with zeroes if necessary
+    while mod(numel(bitsIn), m) ~= 0
+        btemp = zeros(1, numel(bitsIn) + 1);
+        btemp(1:numel(bitsIn)) = bitsIn;
+        bitsIn = btemp;
+    end 
+    
     %how many GF powers are there
     numPowers = numel(bitsIn)/m;
-    powerNotation = Inf*ones(1,numPowers);
+    powerNotation = inf*ones(1,numPowers);
     powerIndex = 1;
     
     for i = 1:numPowers
@@ -86,8 +95,8 @@ elseif hexIn ~= 'x'
     end
     
 else
-    powerNotation = 0;
+    error('No input message provided :(')
+end
 end
 
-end
 
