@@ -127,6 +127,7 @@ lambdaKm1 = lambdaK;
     
     if decFail == 0
         %run chien and forney
+        %print for debug
         chien = chienSearch(errorLoc, degree, gf_matrix);
         if chien ~= 'x'
             forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix);
@@ -135,6 +136,7 @@ lambdaKm1 = lambdaK;
     end
     
 end
+        
         
         
         
