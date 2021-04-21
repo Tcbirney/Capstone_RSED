@@ -19,6 +19,7 @@ for i = numel(poly2): -1: 1 %for each part of poly2 from right to left
         % do we need the multGFM function if i can just check if either of
         % them are inf
         p = MultGF2m(poly2(i),poly1(j), gf_matrix);%multiply each element of poly1 by the poly2 element
+        disp(p);
         if(p < 0)
             toAdd(rowIndx, colIndx - offset) = -1;
         else
@@ -31,7 +32,7 @@ for i = numel(poly2): -1: 1 %for each part of poly2 from right to left
     colIndx = power1+power2+1; %reset column index to rightmost place
 end
  
-sum = -1*ones(1,colIndx);
+sum = -1*ones(1,power1+power2+1);
 %add the rows from multiplication
 [row, col] = size(toAdd);
 sum(1,:) = toAdd(1, :);
@@ -41,6 +42,6 @@ for i0 = 2:(row) %for each row after the first
         in2 = sum(1, i1);
         sum(1,i1) = AddGF2m(in1, in2, gf_matrix);%add that element and the corresponding first row element
     end
- end
+end
 polyProduct = sum;
 end
