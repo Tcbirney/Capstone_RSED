@@ -2,7 +2,7 @@
 ## Makefile generated for component 'polymultgf2_test'. 
 ## 
 ## Makefile     : polymultgf2_test.mk
-## Generated on : Tue Apr 20 22:14:47 2021
+## Generated on : Wed Apr 28 10:40:29 2021
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/polymultgf2_test.elf
 ## Product type : executable
 ## 
@@ -18,10 +18,10 @@
 
 PRODUCT_NAME              = polymultgf2_test
 MAKEFILE                  = polymultgf2_test.mk
-MATLAB_ROOT               = /Applications/MATLAB_R2020b.app
-MATLAB_BIN                = /Applications/MATLAB_R2020b.app/bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)/maci64
-START_DIR                 = /Users/Dona/Documents/CMPE\ 451/Capstone_RSED-tom_test/functions
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020b/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
+START_DIR                 = C:/Users/tcbir/Documents/MATLAB/RSED/Capstone_RSED/functions
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -55,13 +55,13 @@ CPP_STANDARD_OPTS         =
 # MACROS
 #-----------
 
+SHELL            = %SystemRoot%/system32/cmd.exe
 PRODUCT_HEX      = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).hex
 PRODUCT_BIN      = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).eep
 ARDUINO_TOOLS    = $(ARDUINO_ROOT)/hardware/tools/avr/bin
 ELF2EEP_OPTIONS  = -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 DOWNLOAD_ARGS    =  >tmp.trash 2>&1 -P$(ARDUINO_PORT) -V -q -q -q -q -F -C$(ARDUINO_ROOT)/hardware/tools/avr/etc/avrdude.conf -p$(ARDUINO_MCU) -c$(ARDUINO_PROTOCOL) -b$(ARDUINO_BAUD) -D -Uflash:w:
-SLIB_PATH        = /Users/Dona/Documents/MATLAB/R2020b/ArduinoStaticLibrary/ArduinoUno/FasterBuilds
-SSLIB_PATH       = /Users/Dona/Documents/MATLAB/R2020b/ArduinoStaticLibrary/ArduinoUno/FasterBuilds
+SLIB_PATH        = C:/Users/tcbir/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~2/FASTER~1
 
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 
@@ -115,7 +115,7 @@ DOWNLOAD = "$(DOWNLOAD_PATH)/avrdude"
 EXECUTE = $(PRODUCT)
 
 # Builder: Make Tool
-MAKE_PATH = %MATLAB%/bin/maci64
+MAKE_PATH = %MATLAB%\bin\win64
 MAKE = "$(MAKE_PATH)/gmake"
 
 
@@ -141,9 +141,9 @@ ECHO                = echo
 MV                  =
 RUN                 =
 
-#----------------------------------------
-# "Faster Builds" Build Configuration
-#----------------------------------------
+#--------------------------------------
+# "Faster Runs" Build Configuration
+#--------------------------------------
 
 ARFLAGS              = rcs
 ASFLAGS              = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
@@ -162,7 +162,7 @@ CFLAGS               = -std=gnu11  \
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -O0
+                       -Os
 CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics  \
                        -c \
                        -w \
@@ -171,7 +171,7 @@ CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -O0
+                       -Os
 CPP_LDFLAGS          =  -w -Os -Wl,--gc-sections,--relax
 CPP_SHAREDLIB_LDFLAGS  =
 DOWNLOAD_FLAGS       = $(DOWNLOAD_ARGS)$(PRODUCT_HEX):i
@@ -199,7 +199,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/polymultgf2_test_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/standard -I$(ARDUINO_ROOT)/libraries/Servo/src -I/Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/include -I/Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/scheduler/include -I/Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -I/Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/include
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/polymultgf2_test_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/mega -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~1/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~1/SCHEDU~1/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/shared/EXTERN~1/include
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -207,7 +207,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -D_MW_ARDUINO_LOOP_=1 -DMW_ARDUINO_STEP_SIZE=200000 -DMW_ARDUINO_MICROS -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_ANALOG_REF_=0
+DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DMW_TIMERID=5 -DMW_PRESCALAR=1024 -DMW_TIMERCOUNT=62411 -DMW_SCHEDULERCOUNTER=1 -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_BAUDRATE_SERIAL1_=9600 -D_RTT_BAUDRATE_SERIAL2_=9600 -D_RTT_BAUDRATE_SERIAL3_=9600 -D_RTT_ANALOG_REF_=0
 DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DEXT_MODE=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
 DEFINES_OPTS = -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=0
@@ -220,7 +220,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/polymultgf2_test_ert_rtw/polymultgf2_test.c $(START_DIR)/polymultgf2_test_ert_rtw/polymultgf2_test_data.c $(START_DIR)/polymultgf2_test_ert_rtw/rtGetInf.c $(START_DIR)/polymultgf2_test_ert_rtw/rtGetNaN.c $(START_DIR)/polymultgf2_test_ert_rtw/rt_nonfinite.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
+SRCS = $(START_DIR)/polymultgf2_test_ert_rtw/polymultgf2_test.c $(START_DIR)/polymultgf2_test_ert_rtw/polymultgf2_test_data.c $(START_DIR)/polymultgf2_test_ert_rtw/rtGetInf.c $(START_DIR)/polymultgf2_test_ert_rtw/rtGetNaN.c $(START_DIR)/polymultgf2_test_ert_rtw/rt_nonfinite.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
 
 MAIN_SRC = $(START_DIR)/polymultgf2_test_ert_rtw/ert_main.c
 
@@ -246,7 +246,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = $(SSLIB_PATH)/MW_RebuildSrc_Core.o
+LIBS = $(SLIB_PATH)/MW_RebuildSrc_Core.o
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -262,7 +262,7 @@ SYSTEM_LIBS =
 # C Compiler
 #---------------
 
-CFLAGS_SKIPFORSIL = -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -D_RUNONTARGETHARDWARE_BUILD_
+CFLAGS_SKIPFORSIL = -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -D_RUNONTARGETHARDWARE_BUILD_ -D_ROTH_MEGA2560_ -DARDUINO_NUM_SERIAL_PORTS=4
 CFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
 CFLAGS += $(CFLAGS_SKIPFORSIL) $(CFLAGS_BASIC)
@@ -271,7 +271,7 @@ CFLAGS += $(CFLAGS_SKIPFORSIL) $(CFLAGS_BASIC)
 # C++ Compiler
 #-----------------
 
-CPPFLAGS_SKIPFORSIL = -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -D_RUNONTARGETHARDWARE_BUILD_
+CPPFLAGS_SKIPFORSIL = -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -D_RUNONTARGETHARDWARE_BUILD_ -D_ROTH_MEGA2560_ -DARDUINO_NUM_SERIAL_PORTS=4
 CPPFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
 CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
@@ -281,7 +281,7 @@ CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
 #---------------
 
 CPP_LDFLAGS_ = -L"$(SLIB_PATH)"
-CPP_LDFLAGS_SKIPFORSIL = -mmcu=atmega328p 
+CPP_LDFLAGS_SKIPFORSIL = -mmcu=atmega2560 
 
 CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 
@@ -290,7 +290,7 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 #------------------------------
 
 CPP_SHAREDLIB_LDFLAGS_ = -L"$(SLIB_PATH)"
-CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mmcu=atmega328p 
+CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mmcu=atmega2560 
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -299,7 +299,7 @@ CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPF
 #-----------
 
 LDFLAGS_ = -L"$(SLIB_PATH)"
-LDFLAGS_SKIPFORSIL = -mmcu=atmega328p 
+LDFLAGS_SKIPFORSIL = -mmcu=atmega2560 
 
 LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
 
@@ -308,7 +308,7 @@ LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
 #--------------------------
 
 SHAREDLIB_LDFLAGS_ = -L"$(SLIB_PATH)"
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mmcu=atmega328p 
+SHAREDLIB_LDFLAGS_SKIPFORSIL = -mmcu=atmega2560 
 
 SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -557,15 +557,15 @@ rtiostream_utils.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostrea
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-MW_ArduinoHWInit.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp
+MW_ArduinoHWInit.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-io_wrappers.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp
+io_wrappers.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-arduinoAVRScheduler.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
+arduinoAVRScheduler.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
@@ -573,15 +573,15 @@ rtiostream_interface.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_int
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-ext_svr_daemon.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c
+ext_svr_daemon.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rtiostream_serial_daemon.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp
+rtiostream_serial_daemon.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-daemon_checksum.o : /Users/Dona/Documents/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
+daemon_checksum.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
