@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (mtyp4txtbi)
     ;%
-      section.nData     = 3;
-      section.data(3)  = dumData; %prealloc
+      section.nData     = 4;
+      section.data(4)  = dumData; %prealloc
       
 	  ;% mtyp4txtbi.PrimitivePolynomial_Value
 	  section.data(1).logicalSrcIdx = 0;
@@ -41,7 +41,11 @@
 	
 	  ;% mtyp4txtbi.CorruptionVector_Value
 	  section.data(3).logicalSrcIdx = 2;
-	  section.data(3).dtTransOffset = 11;
+	  section.data(3).dtTransOffset = 7;
+	
+	  ;% mtyp4txtbi.GeneratorPolynomial_Value
+	  section.data(4).logicalSrcIdx = 3;
+	  section.data(4).dtTransOffset = 14;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -88,20 +92,16 @@
     ;%
     ;% Auto data (myn32x4lmou)
     ;%
-      section.nData     = 3;
-      section.data(3)  = dumData; %prealloc
+      section.nData     = 2;
+      section.data(2)  = dumData; %prealloc
       
-	  ;% myn32x4lmou.orewlpkjc4
-	  section.data(1).logicalSrcIdx = 0;
+	  ;% myn32x4lmou.grhdw04r2t
+	  section.data(1).logicalSrcIdx = 2;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% myn32x4lmou.jr0wmmp3hu
-	  section.data(2).logicalSrcIdx = 1;
-	  section.data(2).dtTransOffset = 7;
-	
 	  ;% myn32x4lmou.pwywp1q3ek
-	  section.data(3).logicalSrcIdx = 2;
-	  section.data(3).dtTransOffset = 31;
+	  section.data(2).logicalSrcIdx = 3;
+	  section.data(2).dtTransOffset = 7;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -208,8 +208,8 @@
   ;%
 
 
-  targMap.checksum0 = 3365291924;
-  targMap.checksum1 = 3154934564;
-  targMap.checksum2 = 4203869071;
-  targMap.checksum3 = 3721257507;
+  targMap.checksum0 = 1674478042;
+  targMap.checksum1 = 2575357991;
+  targMap.checksum2 = 19410819;
+  targMap.checksum3 = 3709078656;
 

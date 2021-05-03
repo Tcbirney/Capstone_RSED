@@ -91,7 +91,7 @@
       section.nData     = 2;
       section.data(2)  = dumData; %prealloc
       
-	  ;% lj3j1jh0xvj.gsyr1ghide
+	  ;% lj3j1jh0xvj.c5vbklqlh1
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
@@ -169,8 +169,8 @@
   ;%
 
 
-  targMap.checksum0 = 296473445;
-  targMap.checksum1 = 1851797894;
-  targMap.checksum2 = 2248663816;
-  targMap.checksum3 = 2006189957;
+  targMap.checksum0 = 161385053;
+  targMap.checksum1 = 1738562234;
+  targMap.checksum2 = 3138815354;
+  targMap.checksum3 = 1300594532;
 
