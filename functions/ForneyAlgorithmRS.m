@@ -26,12 +26,13 @@ p = PolyMultGF2m(lambda, s_flipped, gf_matrix);
 r = (n - 1) - k;
 ix = col_p - r + 2;
 omega = p(ix:end); %modulus
-deriv = inf*ones(1,numel(omega));
+deriv = -1*ones(1,numel(omega));
 
 %printo = ['Omega: [', num2str(omega(:).'), ']'];
 %disp(printo);
 
 %compute formal derivative
+errorPoly = -1*ones(1,chien(1)+1); 
 xpwr = 1;
 derivIndx = numel(deriv);
 for j = (numel(lambda) - 1):-1:1
@@ -46,7 +47,7 @@ for j = (numel(lambda) - 1):-1:1
     xpwr = xpwr + 1;
 end
 
-errorPoly = -1*ones(1,chien(1)+1); 
+% errorPoly = -1*ones(1,chien(1)+1); 
 
 %sub each Chien value into Forney's expression
 for i0 = 1:numel(chien) %start at highest power

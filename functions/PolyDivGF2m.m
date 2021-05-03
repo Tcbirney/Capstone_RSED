@@ -11,7 +11,7 @@ quotient = -1*ones(1, numDivs+1);
 toSubtract(1,:) = dividend(1:numel(divisor)); %initialize for first subtraction
 sub_res = -1*ones(1, (numel(divisor)));
 bringDwn = numel(divisor) + 1;
-divs = 0; %keep track of number of iteratiions
+divs = 0; %keep track of number of iterations
 
 %for i = 1:numDivs %is this loop redundant?
     for j = 1:(numDivs + 1) %for each element in the divisor
