@@ -3,7 +3,11 @@ function [errorPos] = chienSearch(lambda, degLambda, gf_matrix)
 %disp(msg);
 rootIndx = 1;
 hasRoots = 0;
-    for i = 0: numel(lambda) - 2
+root_len = numel(lambda)-2;
+roots = ones(1, root_len);
+errorPos = ones(1, numel(roots));
+
+    for i = 0: numel(roots)
         eval = EvalPolyGF2m(lambda, i, gf_matrix);
         if eval == -1
             roots(1, rootIndx) = i;
@@ -13,7 +17,7 @@ hasRoots = 0;
     end
     numRoots = rootIndx - 1;
     if hasRoots == 1
-        for i1 = 1:numel(roots);
+        for i1 = 1:numel(roots)
             errorPos(i1) = DivGF2m(0, roots(i1), gf_matrix);
         end
         if numRoots < degLambda

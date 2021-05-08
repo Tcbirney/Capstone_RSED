@@ -2,7 +2,7 @@
 ## Makefile generated for component 'addgf2_test'. 
 ## 
 ## Makefile     : addgf2_test.mk
-## Generated on : Fri Apr 30 13:02:29 2021
+## Generated on : Fri May 07 17:47:50 2021
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/addgf2_test.elf
 ## Product type : executable
 ## 

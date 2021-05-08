@@ -5,7 +5,7 @@
   ;%***********************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 1;
+    nTotSects     = 0;
     sectIdxOffset = 0;
     
     ;%
@@ -22,35 +22,11 @@
     ;%
     paramMap.nSections           = nTotSects;
     paramMap.sectIdxOffset       = sectIdxOffset;
-      paramMap.sections(nTotSects) = dumSection; %prealloc
     paramMap.nTotData            = -1;
     
     ;%
     ;% Auto data (mtyp4txtbi)
     ;%
-      section.nData     = 4;
-      section.data(4)  = dumData; %prealloc
-      
-	  ;% mtyp4txtbi.PrimitivePolynomial_Value
-	  section.data(1).logicalSrcIdx = 0;
-	  section.data(1).dtTransOffset = 0;
-	
-	  ;% mtyp4txtbi.MessagePolynomial_Value
-	  section.data(2).logicalSrcIdx = 1;
-	  section.data(2).dtTransOffset = 4;
-	
-	  ;% mtyp4txtbi.CorruptionVector_Value
-	  section.data(3).logicalSrcIdx = 2;
-	  section.data(3).dtTransOffset = 7;
-	
-	  ;% mtyp4txtbi.GeneratorPolynomial_Value
-	  section.data(4).logicalSrcIdx = 3;
-	  section.data(4).dtTransOffset = 14;
-	
-      nTotData = nTotData + section.nData;
-      paramMap.sections(1) = section;
-      clear section
-      
     
       ;%
       ;% Non-auto Data (parameter)
@@ -69,7 +45,7 @@
   ;%**************************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 1;
+    nTotSects     = 0;
     sectIdxOffset = 0;
     
     ;%
@@ -86,27 +62,11 @@
     ;%
     sigMap.nSections           = nTotSects;
     sigMap.sectIdxOffset       = sectIdxOffset;
-      sigMap.sections(nTotSects) = dumSection; %prealloc
     sigMap.nTotData            = -1;
     
     ;%
     ;% Auto data (myn32x4lmou)
     ;%
-      section.nData     = 2;
-      section.data(2)  = dumData; %prealloc
-      
-	  ;% myn32x4lmou.grhdw04r2t
-	  section.data(1).logicalSrcIdx = 2;
-	  section.data(1).dtTransOffset = 0;
-	
-	  ;% myn32x4lmou.pwywp1q3ek
-	  section.data(2).logicalSrcIdx = 3;
-	  section.data(2).dtTransOffset = 7;
-	
-      nTotData = nTotData + section.nData;
-      sigMap.sections(1) = section;
-      clear section
-      
     
       ;%
       ;% Non-auto Data (signal)
@@ -125,8 +85,8 @@
   ;%*******************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 2;
-    sectIdxOffset = 1;
+    nTotSects     = 0;
+    sectIdxOffset = 0;
     
     ;%
     ;% Define dummy sections & preallocate arrays
@@ -142,46 +102,11 @@
     ;%
     dworkMap.nSections           = nTotSects;
     dworkMap.sectIdxOffset       = sectIdxOffset;
-      dworkMap.sections(nTotSects) = dumSection; %prealloc
     dworkMap.nTotData            = -1;
     
     ;%
     ;% Auto data (a4js2lcfx2i)
     ;%
-      section.nData     = 4;
-      section.data(4)  = dumData; %prealloc
-      
-	  ;% a4js2lcfx2i.ci2ztpcoda
-	  section.data(1).logicalSrcIdx = 0;
-	  section.data(1).dtTransOffset = 0;
-	
-	  ;% a4js2lcfx2i.fbdgcjaqtt
-	  section.data(2).logicalSrcIdx = 1;
-	  section.data(2).dtTransOffset = 1;
-	
-	  ;% a4js2lcfx2i.od535qcnia
-	  section.data(3).logicalSrcIdx = 2;
-	  section.data(3).dtTransOffset = 2;
-	
-	  ;% a4js2lcfx2i.bp0knnywbt
-	  section.data(4).logicalSrcIdx = 3;
-	  section.data(4).dtTransOffset = 4;
-	
-      nTotData = nTotData + section.nData;
-      dworkMap.sections(1) = section;
-      clear section
-      
-      section.nData     = 1;
-      section.data(1)  = dumData; %prealloc
-      
-	  ;% a4js2lcfx2i.btecyny411
-	  section.data(1).logicalSrcIdx = 4;
-	  section.data(1).dtTransOffset = 0;
-	
-      nTotData = nTotData + section.nData;
-      dworkMap.sections(2) = section;
-      clear section
-      
     
       ;%
       ;% Non-auto Data (dwork)
@@ -208,8 +133,8 @@
   ;%
 
 
-  targMap.checksum0 = 1674478042;
-  targMap.checksum1 = 2575357991;
-  targMap.checksum2 = 19410819;
-  targMap.checksum3 = 3709078656;
+  targMap.checksum0 = 399497984;
+  targMap.checksum1 = 102359943;
+  targMap.checksum2 = 4054383028;
+  targMap.checksum3 = 3079084541;
 

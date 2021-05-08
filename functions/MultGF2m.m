@@ -1,7 +1,7 @@
 %multiplies two elements of the Galois Field
 %in1, in2, product in power notation
 function [product] = MultGF2m(in1, in2, gf_matrix)
-%gf_matrix = GenerateGF2m(m, primPoly);
+%gf_matrix = GenerateGF2m(m, primPoly);a
 
 
 % if either one of the inputs are infinity (-1), then

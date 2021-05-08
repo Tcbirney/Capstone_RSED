@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (g1cmapakom)
     ;%
-      section.nData     = 2;
-      section.data(2)  = dumData; %prealloc
+      section.nData     = 4;
+      section.data(4)  = dumData; %prealloc
       
 	  ;% g1cmapakom.Constant1_Value
 	  section.data(1).logicalSrcIdx = 0;
@@ -37,7 +37,15 @@
 	
 	  ;% g1cmapakom.Constant_Value
 	  section.data(2).logicalSrcIdx = 1;
-	  section.data(2).dtTransOffset = 5;
+	  section.data(2).dtTransOffset = 4;
+	
+	  ;% g1cmapakom.Constant2_Value
+	  section.data(3).logicalSrcIdx = 2;
+	  section.data(3).dtTransOffset = 5;
+	
+	  ;% g1cmapakom.Constant3_Value
+	  section.data(4).logicalSrcIdx = 3;
+	  section.data(4).dtTransOffset = 6;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -161,8 +169,8 @@
   ;%
 
 
-  targMap.checksum0 = 3876355661;
-  targMap.checksum1 = 3533336067;
-  targMap.checksum2 = 1559088595;
-  targMap.checksum3 = 584547696;
+  targMap.checksum0 = 2492957549;
+  targMap.checksum1 = 997956388;
+  targMap.checksum2 = 2676195195;
+  targMap.checksum3 = 767623047;
 
