@@ -15,7 +15,7 @@ errorPos = ones(1, numel(roots));
             hasRoots = 1;
         end
     end
-    numRoots = rootIndx - 1;
+    numRoots = rootIndx;
     if hasRoots == 1
         for i1 = 1:numel(roots)
             errorPos(i1) = DivGF2m(0, roots(i1), gf_matrix);
