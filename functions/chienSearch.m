@@ -1,4 +1,4 @@
-function [errorPos] = chienSearch(lambda, degLambda, gf_matrix)
+function [errorPos, numRoots] = chienSearch(lambda, degLambda, gf_matrix)
 %msg = ['Executing Chien Search...'];
 %disp(msg);
 rootIndx = 1;
@@ -21,7 +21,7 @@ errorPos = ones(1, numel(roots));
             errorPos(i1) = DivGF2m(0, roots(i1), gf_matrix);
         end
         if numRoots < degLambda
-            errorPos = 'x';
+            errorPos = -2;
             %fail = ['DECODER FAILURE. THE NUMBER OF ROOTS IS LESS THAN THE DEGREE OF LAMBDA'];
             %disp(fail);
         end
@@ -30,7 +30,7 @@ errorPos = ones(1, numel(roots));
         %print = ['error locations: [' ,num2str(errorPos(:).'), ']'];
         %disp(print);
     else
-        errorPos = 'x';
+        errorPos = -2;
         %print = 'DECODER FAILURE: No roots found. LAMBDA is irreducible over the Galois Field';
         %disp(print);
     end

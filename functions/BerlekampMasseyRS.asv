@@ -9,7 +9,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
     n = (2^m) - 1;
     r = n - m;
     decFail = 0; %indicates decoder failure
-    corrected = -1*ones(1, n+1);
+
     %step 1
     %compute the syndromes S1...Sr for the received codeword and form the
     %syndrome polynomial
@@ -26,7 +26,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
     k = 0;
     L = 0;
     %tx = [0 -1]; %x, highest power on left
-    tx = -1*ones(1, 100);
+    tx = -1*ones(1, r+2);
     tx(1) = 0;
     tx_index = 2;
     lambdaK = -1*ones(1, n+1);
@@ -85,6 +85,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
                 L = k - L;
                 if lambdaKm1(1:end-1) == -1
                     tx(1) = DivGF2m(lambdaKm1(end), deltaK, gf_matrix); %tx = delta(k-1)x/delta(k)
+                    tx_index = 1;
                 else
                     temp_tx = PolyDivGF2m(lambdaKm1, deltaK, gf_matrix); %tx = delta(k-1)x/delta(k)
                     for i = 1:numel(temp_tx)
@@ -134,6 +135,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
         [tempChien, numRoots] = chienSearch(corrected, degree, gf_matrix);
         
         if tempChien(1) ~= -2
+            
             chien = ones(1, numRoots);
             for i = 1:numRoots
                 chien(i) = tempChien(i);
@@ -143,11 +145,11 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
             corrected = CorrectionRS(rec_word, forney, gf_matrix);
             return
         else
-            corrected = -1;
+            corrected = 0;
             return
         end
     else
-        corrected = -2;
+        corrected = 0;
         return
     end
 end
