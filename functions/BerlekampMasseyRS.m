@@ -4,10 +4,11 @@
 %inputs: GF2m matrix with binary coefficients
 %received word polynomial in power notation (powers of alpha)
 %output: the corrected word in power notation
-function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
+function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix, msg)
     m = numel(gf_matrix(1,:));
     n = (2^m) - 1;
-    r = n - m;
+    [msgRow, k] = size(msg);
+    r = n - k; %changed from n - m
     decFail = 0; %indicates decoder failure
     corrected = -1*ones(1, n+1);
     %step 1
