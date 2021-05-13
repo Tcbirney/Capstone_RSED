@@ -4,11 +4,13 @@
 %inputs: GF2m matrix with binary coefficients
 %received word polynomial in power notation (powers of alpha)
 %output: the corrected word in power notation
-function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix, msg)
+function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
     m = numel(gf_matrix(1,:));
     n = (2^m) - 1;
     [msgRow, k] = size(msg);
-    r = n - k; %changed from n - m
+    r = n - k;
+    %r = n - m;
+    
     decFail = 0; %indicates decoder failure
     corrected = -1*ones(1, n+1);
     %step 1
@@ -140,13 +142,13 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix, msg)
 
     %step 10
     %the error locator polynomial is the result of step k
-    corrected = lambdaK;
+    errorLoc = lambdaK;
     %printres = ['the error locator polynomial is: ', num2str(errorLoc(:).'), '. Berlekamp-Massey complete.'];
     %disp(printres);
     
     if decFail == 0
         %run chien and forney
-        [tempChien, numRoots] = chienSearch(corrected, degree, gf_matrix);
+        [tempChien, numRoots] = chienSearch(errorLoc, degree, gf_matrix);
         
         if tempChien(1) ~= -2
             chien = ones(1, numRoots);
@@ -154,7 +156,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix, msg)
                 chien(i) = tempChien(i);
             end
             
-            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix, r);
+            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix,r);
             corrected = CorrectionRS(rec_word, forney, gf_matrix);
             return
         else

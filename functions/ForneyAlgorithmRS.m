@@ -1,4 +1,4 @@
-function [errorPoly] = ForneyAlgorithmRS(lambda,syndromes,chien,gf_matrix)
+function [errorPoly] = ForneyAlgorithmRS(lambda,syndromes,chien,gf_matrix,r)
 %function to establish and find the roots of the Error Evaluator Polynomial
 %omega = lambda*(s + 1)modx^
 %multiply lambda by the syndrome + 1
@@ -21,9 +21,9 @@ s_flipped(end) = 0;
 p = PolyMultGF2m(lambda, s_flipped, gf_matrix);
 
 %ignore all terms with degree than r = n - k = 2t
-[n, k] = size(gf_matrix);
+%[n, k] = size(gf_matrix);
 [row_p, col_p] = size(p);
-r = (n - 1) - k;
+%r = (n - 1) - k;
 ix = col_p - r + 2;
 omega = p(ix:end); %modulus
 deriv = -1*ones(1,numel(omega));
@@ -47,55 +47,46 @@ for j = (numel(lambda) - 1):-1:1
     xpwr = xpwr + 1;
 end
 
-% errorPoly = -1*ones(1,chien(1)+1); 
+errorPoly = -1*ones(1,chien(1)+1); 
+
+%chop -1s off deriv
+i7 = 1;
+while (deriv(i7) == -1)
+    %find where to chop deriv
+    i7 = i7 + 1;
+end
+
+%for simulink
+derivTemp = deriv(i7:end);
+deriv = derivTemp;
+
+highestPwr = 0;
+for i8 = 1:numel(chien)
+    if chien(i8) > highestPwr
+        highestPwr = chien(i8);
+    end
+end
+
+errorPoly = -1*ones(1, highestPwr + 1); 
+
+%chop "-1s" off left side of Omega
+i6 = 1;
+while (omega(i6) == -1)
+    %find where to chop omega
+    i6 = i6 + 1;
+end
+
+%for simulink
+omegaTemp = omega(i6:end);
+omega = omegaTemp;
 
 %sub each Chien value into Forney's expression
-for i0 = 1:numel(chien) %start at highest power
-   intPoly = -1*ones(1,numel(omega));    
-   errorIndx = numel(errorPoly) - (chien(i0));
-   negative = modNum - chien(i0); 
-   coef = chien(i0) - deriv(end); %subtract outside alpha from denominator alpha
-   
-   xpwr = numel(omega) - 1;
-   for i1 = 1:numel(omega) %for each term in omega
-        intPoly(i1) = xpwr * negative; %evaluate x at the exponent
-        intPoly(i1) = intPoly(i1) + omega(i1); %add that to the coefficient power (multiply)
-        xpwr = xpwr - 1;
-   end
-   
-   %distribute the new outside alpha and do mod
-   for i2 = 1:numel(intPoly)
-       intPoly(i2) = intPoly(i2) + coef;
-       intPoly(i2) = mod(intPoly(i2), modNum);
-   end
-   
-   %combine terms and solve
-   for i3 = 1:numel(intPoly) %for each term
-        for i4 = i3 + 1:numel(intPoly) %check the other terms to cancel
-            if numel(intPoly) > 1
-                if intPoly(i4) == intPoly(i3)
-                    intPoly(i4) = [];
-                    intPoly(i3) = [];
-                end
-             end
-       end
-   end
-   
-   if numel(intPoly) ~= 1
-       eval1 = intPoly(1);
-       for i5 = 2:numel(intPoly)
-           eval1 = AddGF2m(eval1, intPoly(i5), gf_matrix);
-       end
-   else
-       eval1 = intPoly(1);
-   end
-   
-   errorPoly(errorIndx) = eval1;
-%    eval = EvalPolyGF2m(omega, negative, gf_matrix); %eval omega at negative chien value
-%    product = MultGF2m(chien(i0), eval, gf_matrix); %multiply result by positive chien value
-%    derivEval = EvalPolyGF2m(deriv, negative, gf_matrix); %divide that by deriv evaluated at negative chien 
-%    errorPoly(errorIndx) = PolyDivGF2m(product, derivEval, gf_matrix);
+for i0 = 1:numel(chien)
+    %solve omega(-chien)
+    errorIndx = numel(errorPoly) - (chien(i0));
+    omegaVal = EvalPolyGF2m(omega, -chien(i0), gf_matrix);
+    numerator = MultGF2m(omegaVal, chien(i0), gf_matrix);
+    denominator = EvalPolyGF2m(deriv, -chien(i0), gf_matrix);
+    errorPoly(errorIndx) = DivGF2m(numerator, denominator, gf_matrix);
 end
-%print = ['Error pattern: [', num2str(errorPoly(:).'), ']'];
-%disp(print);
 end

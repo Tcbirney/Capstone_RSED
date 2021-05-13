@@ -4,7 +4,8 @@ function gf  = GenerateGF2m(primPoly, m) %primPoly in power notation, highest or
 % hard coded size of retrun matrices and gf mtrix because simulink
 % whines about variable output size. Havent figured out how to fix it
 % ask laberge
-    gf = zeros(8, m); %there are 2^m field elements
+    %gf = zeros(8, m); %there are 2^m field elements
+    gf = zeros(2^m, m); %there are 2^m field elements
 
     gfIndx = 2; %gfIndx(1) holds initial state 
     numShifts = (2^m) - 1;
