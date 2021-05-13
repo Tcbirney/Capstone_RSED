@@ -154,7 +154,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix, msg)
                 chien(i) = tempChien(i);
             end
             
-            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix);
+            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix, r);
             corrected = CorrectionRS(rec_word, forney, gf_matrix);
             return
         else
