@@ -131,7 +131,7 @@ lambdaKm1 = lambdaK;
         %print for debug
         chien = chienSearch(errorLoc, degree, gf_matrix);
         if chien ~= 'x'
-            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix);
+            forney = ForneyAlgorithmRS(lambdaK,syndromes,chien,gf_matrix, r);
             CorrectionRS(rec_word,forney, gf_matrix)
         end
     end
