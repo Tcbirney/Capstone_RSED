@@ -160,7 +160,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
             corrected = CorrectionRS(rec_word, forney, gf_matrix);
             return
         else
-            corrected = -1;
+            corrected = -2;
             return
         end
     else
