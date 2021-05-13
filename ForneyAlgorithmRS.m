@@ -1,4 +1,4 @@
-function [errorPoly] = ForneyAlgorithmRS(lambda,syndromes,chien,gf_matrix)
+function [errorPoly] = ForneyAlgorithmRS(lambda,syndromes,chien,gf_matrix, r)
 %function to establish and find the roots of the Error Evaluator Polynomial
 %omega = lambda*(s + 1)modx^
 %multiply lambda by the syndrome + 1
@@ -21,9 +21,7 @@ s_flipped(end) = 0;
 p = PolyMultGF2m(lambda, s_flipped, gf_matrix);
 
 %ignore all terms with degree than r = n - k = 2t
-[n, k] = size(gf_matrix);
 [row_p, col_p] = size(p);
-r = (n - 1) - k;
 ix = col_p - r + 2;
 omega = p(ix:end); %modulus
 deriv = inf*ones(1,numel(omega));
@@ -47,6 +45,17 @@ for j = (numel(lambda) - 1):-1:1
 end
 
 errorPoly = inf*ones(1,chien(1)+1); 
+
+%chop "Infs" off left side of Omega
+i6 = 1;
+while (omega(i6) == Inf)
+    %find where to chop omega
+    i6 = i6 + 1;
+end
+
+%for simulink
+omegaTemp = omega(i6:end);
+omega = omegaTemp;
 
 %sub each Chien value into Forney's expression
 for i0 = 1:numel(chien) %start at highest power
