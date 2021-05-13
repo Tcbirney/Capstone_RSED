@@ -27,7 +27,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
     L = 0;
     %tx = [0 -1]; %x, highest power on left
     tx = -1*ones(1, 100);
-    tx(1) = 0;
+    tx(1) = 0;tx(2) = -1;
     tx_index = 2;
     lambdaK = -1*ones(1, n+1);
     lambdaK(end) = 0; %x
@@ -52,10 +52,20 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
         %end step 3**********************************************************
       
         %step 4
+        first = 0;
+        %tx_index = 2;
         if deltaK == -1 %if deltaK == 0, step 8
             %step 8
             %tx(numel(tx) + 1) = -1; %Shift T(x) to the left (higher power): T(x) = xT(x).
             tx_index = tx_index + 1;
+            %temp = tx_index;
+            %if first == 0
+            %    temp = temp + 1;
+            %else
+            %    temp = temp - 1;
+            %    first = 1;
+            %end
+            %tx_index = temp;
         else %otherwise step 5,6
             %step 5
             %modify connection polynomial
@@ -80,21 +90,25 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix)
                 %step 8
                 %tx(numel(tx) + 1) = -1; %Shift T(x) to the left (higher power): T(x) = xT(x).
                 tx_index = tx_index + 1;
+                %tx_index = tx_index-1
             else %otherwise step 7 then step 8
                 %step 7
                 L = k - L;
                 if lambdaKm1(1:end-1) == -1
                     tx(1) = DivGF2m(lambdaKm1(end), deltaK, gf_matrix); %tx = delta(k-1)x/delta(k)
+                    tx_index = 1;
                 else
                     temp_tx = PolyDivGF2m(lambdaKm1, deltaK, gf_matrix); %tx = delta(k-1)x/delta(k)
                     for i = 1:numel(temp_tx)
                         tx(i) = temp_tx(i);
                     end
+                    tx_index = numel(temp_tx);
                 end
             
                 %step 8
                 %tx(numel(tx) + 1) = -1; %Shift T(x) to the left (higher power): T(x) = xT(x).
                 tx_index = tx_index + 1;
+                %tx_index = tx_index-1;
             end
         end
         %update k - 1 variables
