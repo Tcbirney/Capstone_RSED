@@ -30,8 +30,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
     L = 0;
     %tx = [0 -1]; %x, highest power on left
     tx = -1*ones(1, 100);
-    tx(1) = 0;
-    tx(2) = -1;
+    tx(1) = 0;tx(2) = -1;
     tx_index = 2;
     lambdaK = -1*ones(1, n+1);
     lambdaK(end) = 0; %x
@@ -169,3 +168,6 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
         return
     end
 end
+        
+        
+        
