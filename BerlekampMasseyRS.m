@@ -23,6 +23,7 @@ end
 
 if syndromes(1:end) == inf %if all syndromes are zero, no errors
    disp('No errors found. Berlekamp-Massey complete.');
+   errorLoc = rec_word;
    return;
 end
 
