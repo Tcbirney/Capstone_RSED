@@ -1,11 +1,12 @@
-function [errorPos, numRoots] = chienSearch(lambda, degLambda, gf_matrix)
+function [errorPos] = chienSearch(lambda, degLambda, gf_matrix)
+%SIMULINK TEST
 %msg = ['Executing Chien Search...'];
 %disp(msg);
 rootIndx = 1;
 hasRoots = 0;
 root_len = numel(lambda)-2;
 roots = ones(1, root_len);
-errorPos = ones(1, numel(roots));
+errorPos = ones(1, numel(roots)); %changed from 1, numel(roots)
 
     for i = 0: numel(roots)
         eval = EvalPolyGF2m(lambda, i, gf_matrix);
@@ -21,7 +22,7 @@ errorPos = ones(1, numel(roots));
             errorPos(i1) = DivGF2m(0, roots(i1), gf_matrix);
         end
         if numRoots < degLambda
-            errorPos = -2;
+            errorPos = -2; %changed from x for simulink
             %fail = ['DECODER FAILURE. THE NUMBER OF ROOTS IS LESS THAN THE DEGREE OF LAMBDA'];
             %disp(fail);
         end
