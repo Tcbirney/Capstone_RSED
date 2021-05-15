@@ -29,6 +29,7 @@ elseif bitsIn ~= -2
     end
     
     btemp = zeros(1,numBits + bitsCount);
+    btemp(1:numel(bitsIn)) = bitsIn;
     bitsIn = btemp;
 
     %how many GF powers are there
