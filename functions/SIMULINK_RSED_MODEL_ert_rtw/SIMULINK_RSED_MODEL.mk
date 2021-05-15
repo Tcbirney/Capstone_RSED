@@ -2,7 +2,7 @@
 ## Makefile generated for component 'SIMULINK_RSED_MODEL'. 
 ## 
 ## Makefile     : SIMULINK_RSED_MODEL.mk
-## Generated on : Fri May 14 22:27:37 2021
+## Generated on : Sat May 08 13:05:00 2021
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/SIMULINK_RSED_MODEL.elf
 ## Product type : executable
 ## 
@@ -21,7 +21,7 @@ MAKEFILE                  = SIMULINK_RSED_MODEL.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/tcbir/Desktop/Capstone_RSED-3b4cdf2f72075f299bdccf7cc4a9d4de129d3458/functions
+START_DIR                 = C:/Users/tcbir/Documents/MATLAB/RSED/Capstone_RSED/functions
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
