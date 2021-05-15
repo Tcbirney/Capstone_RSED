@@ -23,6 +23,7 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
 
     if syndromes(1:end) == -1 %if all syndromes are zero, no errors
        %disp('No errors found. Berlekamp-Massey complete.');
+       errorLoc = rec_word;
        return;
     end
 
