@@ -168,6 +168,3 @@ function [corrected] = BerlekampMasseyRS(rec_word, gf_matrix,msg)
         return
     end
 end
-        
-        
-        
