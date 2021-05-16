@@ -1,7 +1,7 @@
 function [powerNotation] = convertGFPower(gf_matrix, bitsIn, hexIn, powers)
 %Takes in gf matrix, options of power notation, binary, or hex and converts to power notation if
 %necessary. unused input formats should hold 'x'. Hex format should be
-%['A1';'B1'], bits [1 1 0 0]
+%['A1','B1'], bits [1 1 0 0]
 
 m = numel(gf_matrix(1,:));
         
