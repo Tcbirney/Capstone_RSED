@@ -25,7 +25,7 @@ if bitsIn ~= -2
         errorLoc = btemp;
     elseif bitsCount > numel(codeWord)
         btemp = zeros(1, cols);
-        btemp = bitsIn(1:cols);
+        btemp = bitsIn(1:numel(codeWord));
         errorLoc = btemp;
     end        
 
@@ -101,7 +101,7 @@ elseif hexIn ~= -2
         %bitsIn = btemp;
     elseif bitsCount > numel(codeWord)
         btemp = zeros(1, cols);
-        btemp = bitsIn(1:cols);
+        btemp = bitsIn(1:numel(codeWord));
         %bitsIn = btemp;
     end  
     errorLoc = btemp;
