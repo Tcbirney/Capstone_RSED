@@ -28,17 +28,17 @@ elseif bitsIn ~= -2
         bitsCount = bitsCount + 1;
     end
     
-    btemp = zeros(1,numBits + bitsCount);
+    btemp = zeros(1, bitsCount);
     btemp(1:numel(bitsIn)) = bitsIn;
     bitsIn = btemp;
 
     %how many GF powers are there
     numPowers = numel(bitsIn)/m;
-    powerNotation = inf*ones(1,numPowers);
+    powerNotation = -1*ones(1,numPowers);
     powerIndex = 1;
     
     for i = 1:numPowers
-        gfElement = bitsIn(1:3);
+        gfElement = bitsIn(1:m);
 
         %compare element with gf rows
          [rows, cols] = size(gf_matrix);
@@ -46,7 +46,7 @@ elseif bitsIn ~= -2
         for i1 = 1:rows %check each row of GF for matches
             if gfElement(1,:) == gf_matrix(i1,:)
                 if i1 == 1
-                    powerNotation(powerIndex) = Inf;
+                    powerNotation(powerIndex) = -1;
                 else
                     powerNotation(powerIndex) = i1 - 2;%reverse indexing from above
                 end
@@ -145,16 +145,17 @@ elseif hexIn ~= -2
         bitsCount = bitsCount + 1;
     end
     
-    btemp = zeros(1,numBits + bitsCount);
+    btemp = zeros(1,bitsCount);
+    btemp(1,1:numel(bitsIn)) = bitsIn;
     bitsIn = btemp;
     
     %how many GF powers are there
     numPowers = numel(bitsIn)/m;
-    powerNotation = Inf*ones(1,numPowers);
+    powerNotation = -1*ones(1,numPowers);
     powerIndex = 1;
     
     for i = 1:numPowers
-        gfElement = bitsIn(1:3);
+        gfElement = bitsIn(1:m);
 
         %compare element with gf rows
          [rows, cols] = size(gf_matrix);
@@ -162,7 +163,7 @@ elseif hexIn ~= -2
         for i1 = 1:rows %check each row of GF for matches
             if gfElement(1,:) == gf_matrix(i1,:)
                 if i1 == 1
-                    powerNotation(powerIndex) = Inf;
+                    powerNotation(powerIndex) = -1;
                 else
                     powerNotation(powerIndex) = i1 - 2;%reverse indexing from above
                 end
@@ -177,3 +178,5 @@ else
     error('No input message provided :(')
 end
 end
+
+
