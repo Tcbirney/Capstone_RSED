@@ -50,9 +50,11 @@ end
 
 %chop infs off deriv
 i7 = 1;
-while (deriv(i7) == Inf)
-    %find where to chop deriv
-    i7 = i7 + 1;
+if (deriv(end) ~= Inf)
+    while (deriv(i7) == Inf)
+        %find where to chop deriv
+        i7 = i7 + 1;
+    end
 end
 
 %for simulink
